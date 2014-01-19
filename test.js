@@ -14,12 +14,18 @@ it('should generate report', function (cb) {
 
 	var stream = plato('report');
 
+	stream.on('data', function () {});
+
 	stream.on('end', function () {
 		assert(fs.existsSync('report'));
 		rimraf.sync('report');
 		cb();
 	});
 
-	stream.write(new gutil.File({path: 'index.js'}));
+	stream.write(new gutil.File({
+		path: 'index.js',
+		contents: new Buffer('')
+	}));
+
 	stream.end();
 });

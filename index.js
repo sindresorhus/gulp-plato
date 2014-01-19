@@ -1,31 +1,41 @@
 'use strict';
 var gutil = require('gulp-util');
-var through = require('through');
+var through = require('through2');
 var plato = require('plato');
-var _ = require('lodash');
 
 module.exports = function (destDir, options) {
-	var paths = [];
-
 	if (!destDir) {
-		throw new Error('gulp-plato: `destDir` required.');
+		throw new gutil.PluginError('gulp-plato', '`destDir` required');
 	}
+
+	var paths = [];
 
 	options = options || {};
 	options.jshint = options.jshint || {};
 	options.complexity = options.complexity || {};
 
-	return through(function (file) {
+	return through.obj(function (file, enc, cb) {
+		if (file.isNull()) {
+			this.push(file);
+			return cb();
+		}
+
+		if (file.isStream()) {
+			this.emit('error', new gutil.PluginError('gulp-plato', 'Streaming not supported'));
+			return cb();
+		}
+
 		paths.push(file.path);
-		this.emit('data', file);
-	}, function () {
+		this.push(file);
+		cb();
+	}, function (cb) {
 		if (paths.length === 0) {
-			return this.emit('end');
+			return cb();
 		}
 
 		plato.inspect(paths, destDir, options, function () {
 			gutil.log('gulp-plato: Report generated in ' + gutil.colors.blue(destDir) + '.');
-			this.emit('end');
-		}.bind(this));
+			cb();
+		});
 	});
 };
