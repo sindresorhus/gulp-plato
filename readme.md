@@ -22,7 +22,16 @@ var plato = require('gulp-plato');
 
 gulp.task('default', function () {
 	gulp.src('app.js')
-		.pipe(plato('report'));
+		.pipe(plato('report', {
+			jshint: {
+				options: {
+					strict: true
+				}
+			},
+			complexity: {
+				trycatch: true
+			}
+		}));
 });
 ```
 
