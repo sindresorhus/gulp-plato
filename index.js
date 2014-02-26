@@ -13,6 +13,7 @@ module.exports = function (destDir, options) {
 	options = options || {};
 	options.jshint = options.jshint || {};
 	options.complexity = options.complexity || {};
+	options.complexity.newmi = true;
 
 	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
