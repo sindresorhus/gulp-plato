@@ -1,4 +1,4 @@
-# [gulp](https://github.com/wearefractal/gulp)-plato [![Build Status](https://secure.travis-ci.org/sindresorhus/gulp-plato.png?branch=master)](http://travis-ci.org/sindresorhus/gulp-plato)
+# [gulp](http://gulpjs.com)-plato [![Build Status](https://travis-ci.org/sindresorhus/gulp-plato.svg?branch=master)](https://travis-ci.org/sindresorhus/gulp-plato)
 
 > Generate complexity analysis reports with [plato](https://github.com/es-analysis/plato)
 
@@ -7,14 +7,12 @@
 
 ## Install
 
-Install with [npm](https://npmjs.org/package/gulp-plato)
-
-```
-npm install --save-dev gulp-plato
+```bash
+$ npm install --save-dev gulp-plato
 ```
 
 
-## Example
+## Usage
 
 ```js
 var gulp = require('gulp');
@@ -34,6 +32,7 @@ gulp.task('default', function () {
 		}));
 });
 ```
+
 
 ## API
 
@@ -61,4 +60,4 @@ Type: `Object`
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)
