@@ -19,7 +19,7 @@ var gulp = require('gulp');
 var plato = require('gulp-plato');
 
 gulp.task('default', function () {
-	gulp.src('app.js')
+	return gulp.src('app.js')
 		.pipe(plato('report', {
 			jshint: {
 				options: {
