@@ -15,6 +15,17 @@ module.exports = function (destDir, options) {
 	options.complexity = options.complexity || {};
 	options.complexity.newmi = true;
 
+	if(typeof options.jshint === 'string') {
+		var fs = require('fs');
+
+		if (fs.existsSync(options.jshint)) {
+			// read in the .jshintrc file
+			var json = fs.readFileSync(options.jshint).toString();
+			var jshintOptions = JSON.parse(json);
+			options.jshint.options = jshintOptions;
+		}
+	}
+
 	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
 			this.push(file);
