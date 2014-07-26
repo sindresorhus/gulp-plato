@@ -40,20 +40,39 @@ gulp.task('default', function () {
 
 #### destDir
 
-*Required*  
+*Required*
 Type: `String`
 
 Report destination.
 
 #### options.jshint
 
-Type: `Object`  
+Type: `Object`
 
 [Options](http://www.jshint.com/docs/options/) passed to JSHint.
 
+Alternatively, you can set options.jshint to be the path to your existing .jshintrc file.
+
+Type: `string`
+
+```js
+var gulp = require('gulp');
+var plato = require('gulp-plato');
+
+gulp.task('default', function () {
+	return gulp.src('app.js')
+		.pipe(plato('report', {
+			jshint: '.jshintrc',
+			complexity: {
+				trycatch: true
+			}
+		}));
+});
+```
+
 #### options.complexity
 
-Type: `Object`  
+Type: `Object`
 
 [Options](https://github.com/philbooth/complexity-report#command-line-options) passed to complexity-report.
 
