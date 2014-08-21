@@ -2,6 +2,7 @@
 var gutil = require('gulp-util');
 var through = require('through2');
 var plato = require('plato');
+var fs = require('fs');
 
 module.exports = function (destDir, options) {
 	if (!destDir) {
@@ -11,9 +12,28 @@ module.exports = function (destDir, options) {
 	var paths = [];
 
 	options = options || {};
-	options.jshint = options.jshint || {};
+	options.jshint = loadJsHintOptions(options.jshint);
 	options.complexity = options.complexity || {};
 	options.complexity.newmi = true;
+
+	function loadJsHintOptions(input) {
+		if (typeof input === 'object') {
+			return input;
+		}
+
+		var file = input || '.jshintrc';
+		if (!fs.existsSync(file)) {
+			return {};
+		}
+
+		var jshint = {};
+		jshint.options = JSON.parse(fs.readFileSync('.jshintrc').toString());
+		if (jshint.options.globals) {
+			jshint.globals = jshint.options.globals;
+			delete jshint.options.globals;
+		}
+		return jshint;
+	}
 
 	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
