@@ -2,8 +2,8 @@
 var fs = require('fs');
 var assert = require('assert');
 var gutil = require('gulp-util');
-var plato = require('./index');
 var rimraf = require('rimraf');
+var plato = require('./');
 
 before(function () {
 	rimraf.sync('report');

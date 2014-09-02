@@ -7,7 +7,7 @@
 
 ## Install
 
-```bash
+```sh
 $ npm install --save-dev gulp-plato
 ```
 
@@ -41,23 +41,23 @@ gulp.task('default', function () {
 #### destDir
 
 *Required*  
-Type: `String`
+Type: `string`
 
 Report destination.
 
 #### options.jshint
 
-Type: `Object`  
+Type: `object`  
 
 [Options](http://www.jshint.com/docs/options/) passed to JSHint.
 
 #### options.complexity
 
-Type: `Object`  
+Type: `object`  
 
 [Options](https://github.com/philbooth/complexity-report#command-line-options) passed to complexity-report.
 
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](http://sindresorhus.com)

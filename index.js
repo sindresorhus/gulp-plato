@@ -17,21 +17,21 @@ module.exports = function (destDir, options) {
 
 	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
-			this.push(file);
-			return cb();
+			cb(null, file);
+			return;
 		}
 
 		if (file.isStream()) {
-			this.emit('error', new gutil.PluginError('gulp-plato', 'Streaming not supported'));
-			return cb();
+			cb(new gutil.PluginError('gulp-plato', 'Streaming not supported'));
+			return;
 		}
 
 		paths.push(file.path);
-		this.push(file);
-		cb();
+		cb(null, file);
 	}, function (cb) {
 		if (paths.length === 0) {
-			return cb();
+			cb();
+			return;
 		}
 
 		plato.inspect(paths, destDir, options, function () {
