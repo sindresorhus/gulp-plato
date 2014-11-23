@@ -1,6 +1,6 @@
 {
   "name": "gulp-plato",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Generate complexity analysis reports",
   "license": "MIT",
   "repository": "sindresorhus/gulp-plato",
