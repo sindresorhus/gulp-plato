@@ -1,4 +1,6 @@
-# [gulp](http://gulpjs.com)-plato [![Build Status](https://travis-ci.org/sindresorhus/gulp-plato.svg?branch=master)](https://travis-ci.org/sindresorhus/gulp-plato)
+# gulp-plato [![Build Status](https://travis-ci.org/sindresorhus/gulp-plato.svg?branch=master)](https://travis-ci.org/sindresorhus/gulp-plato)
+
+**Deprecated. Just use [`plato`](https://github.com/es-analysis/plato#from-scripts) directly.**
 
 > Generate complexity analysis reports with [plato](https://github.com/es-analysis/plato)
 
